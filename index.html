@@ -1,0 +1,2289 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwuJD-NddcLbcaap_utAGs0yXcuVjaDFOUZn9SC1Cjs9h9jLrtGAiaiHDPq7e7H3tkZOg/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_CHE_0010 = [
+    {
+        question: "A chemical system is described as experiencing a 'dynamic' equilibrium. What fundamental characteristic distinguishes this state from a mere cessation of observable change?",
+        options: [
+            "The macroscopic properties remain constant while microscopic processes continue at equal rates.",
+            "The forward and reverse reaction rates become zero.",
+            "The concentrations of all species continuously fluctuate within a narrow range.",
+            "Reactant conversion to products has reached a complete standstill."
+        ],
+        correctAnswer: 0,
+        reasoning: "Textbook theory mentions that at dynamic equilibrium, macroscopic properties appear constant, but the forward and reverse reactions are still occurring microscopically at equal rates, maintaining the constant concentrations."
+    },
+    {
+        question: "Consider a reversible reaction where all participating substances are in the gaseous phase. Such a system, when achieving equilibrium, is categorized by the uniformity of its constituent phases. Which term accurately describes this equilibrium state?",
+        options: [
+            "Heterogeneous equilibrium",
+            "Homogeneous equilibrium",
+            "Phase-separated equilibrium",
+            "Solvent-dependent equilibrium"
+        ],
+        correctAnswer: 1,
+        reasoning: "Textbook theory states that homogeneous equilibrium occurs when all reactants and products are in the same phase, such as all gases or all miscible liquids."
+    },
+    {
+        question: "The Law of Mass Action posits that a reaction's speed is fundamentally linked to the 'active masses' of its constituents. In the context of solutions, what scientific measure is considered analogous to these active masses?",
+        options: [
+            "Density of the solution",
+            "Total volume occupied by the reactants",
+            "Molar concentrations of the substances",
+            "Osmotic pressure exerted by the solution"
+        ],
+        correctAnswer: 2,
+        reasoning: "Textbook theory clarifies that 'active masses' in the Law of Mass Action are equivalent to the molar concentrations of the reacting substances."
+    },
+    {
+        question: "In a system at equilibrium, a sudden influx of a product is introduced. According to Le-Chatelier's Principle, how will the system respond to this disturbance to re-establish a stable state?",
+        options: [
+            "The forward reaction rate will increase indefinitely.",
+            "The equilibrium constant will immediately decrease.",
+            "The equilibrium will shift towards the reactants.",
+            "The overall volume of the system will contract."
+        ],
+        correctAnswer: 2,
+        reasoning: "Textbook theory from Le-Chatelier's Principle indicates that adding a product shifts the equilibrium to the left (reverse direction), favoring reactant formation, to minimize the effect of the added product."
+    },
+    {
+        question: "A gaseous equilibrium system, characterized by an equal number of moles of gas on both the reactant and product sides, undergoes a significant increase in external pressure. What observable change in the equilibrium position would be anticipated?",
+        options: [
+            "A substantial shift towards the product side.",
+            "A noticeable shift towards the reactant side.",
+            "No discernible shift in the equilibrium position.",
+            "An increase in the value of the equilibrium constant."
+        ],
+        correctAnswer: 2,
+        reasoning: "Textbook theory explains that if there is no change in the number of moles of gas (Δn = 0), pressure changes have no effect on the equilibrium position."
+    },
+    {
+        question: "For an exothermic reversible reaction, how does a deliberate elevation in the system's temperature impact both the equilibrium's position and its associated constant?",
+        options: [
+            "It shifts left, decreasing the constant.",
+            "It shifts right, increasing the constant.",
+            "It shifts right, decreasing the constant.",
+            "It shifts left, increasing the constant."
+        ],
+        correctAnswer: 0,
+        reasoning: "Textbook theory states that for an exothermic reaction, increasing temperature shifts the equilibrium to the left (reverse, endothermic direction) and decreases the value of the equilibrium constant (Kc)."
+    },
+    {
+        question: "A particular industrial process relies on a catalyst to optimize product yield. What specific role does a catalyst play in a reversible reaction to achieve this, without altering the final composition at equilibrium?",
+        options: [
+            "It increases the equilibrium constant.",
+            "It selectively accelerates the forward reaction.",
+            "It reduces the time required to reach equilibrium.",
+            "It alters the enthalpy change of the reaction."
+        ],
+        correctAnswer: 2,
+        reasoning: "Textbook theory specifies that a catalyst increases the rate of both forward and reverse reactions equally, helping the system attain equilibrium faster, but it does not change the position or value of the equilibrium constant."
+    },
+    {
+        question: "In the Haber's process for ammonia synthesis, high pressure is employed. This condition is crucial for maximizing ammonia production due to which inherent characteristic of the reaction's stoichiometry?",
+        options: [
+            "The catalyst requires elevated pressure for activity.",
+            "There is a net reduction in the number of gas moles.",
+            "The reaction is highly endothermic.",
+            "Reactant gases are more compressible than product gas."
+        ],
+        correctAnswer: 1,
+        reasoning: "Textbook theory on Haber's process (N2(g) + 3H2(g) ⇌ 2NH3(g)) indicates that 4 moles of gas react to form 2 moles of gas. High pressure shifts equilibrium towards the side with fewer moles of gas, favoring ammonia formation."
+    },
+    {
+        question: "The common ion effect describes a specific phenomenon involving weak electrolytes. What is the observable consequence on the weak electrolyte's behavior when a strong electrolyte sharing a common ion is introduced?",
+        options: [
+            "Its dissociation rate significantly increases.",
+            "Its ionization or solubility is notably reduced.",
+            "Its solubility in the solvent dramatically improves.",
+            "Its chemical reactivity is enhanced."
+        ],
+        correctAnswer: 1,
+        reasoning: "Textbook theory defines the common ion effect as the suppression of the extent of dissociation or solubility of a weak electrolyte by the presence of a strong electrolyte sharing a common ion."
+    },
+    {
+        question: "When comparing the Ionic Product (IP) to the Solubility Product (Ksp) for a sparingly soluble salt, what specific condition indicates that a solution is supersaturated and will experience precipitation?",
+        options: [
+            "Ionic Product is less than Ksp.",
+            "Ionic Product is equal to Ksp.",
+            "Ionic Product is greater than Ksp.",
+            "Ksp is dependent on the ionic product."
+        ],
+        correctAnswer: 2,
+        reasoning: "Textbook theory states that if IP > Ksp, the solution is supersaturated and unstable, leading to precipitation until IP = Ksp."
+    },
+    {
+        question: "The state of chemical equilibrium is fundamentally characterized by the unchanging nature of reactant and product concentrations over time. What crucial, underlying kinetic condition ensures this observed constancy?",
+        options: [
+            "The complete consumption of the limiting reactant.",
+            "The activation energy for the forward reaction becomes infinite.",
+            "The rates of the forward and reverse reactions are identical.",
+            "All molecular motion within the system ceases."
+        ],
+        correctAnswer: 2,
+        reasoning: "Textbook theory defines equilibrium as the state where concentrations remain constant because the rates of the forward and reverse reactions become equal."
+    },
+    {
+        question: "Consider the decomposition of solid calcium carbonate into solid calcium oxide and gaseous carbon dioxide. This process attains equilibrium within a closed container. What specific classification applies to this type of chemical equilibrium?",
+        options: [
+            "Solution equilibrium",
+            "Heterogeneous equilibrium",
+            "Gas-phase equilibrium",
+            "Homogeneous equilibrium"
+        ],
+        correctAnswer: 1,
+        reasoning: "Textbook theory defines heterogeneous equilibrium as occurring when reactants and products exist in two or more different phases, as exemplified by CaCO3(s) ⇌ CaO(s) + CO2(g)."
+    },
+    {
+        question: "The equilibrium constant (Kc) for a given reaction remains invariant under certain conditions. Which factor, if altered, will *not* change the numerical value of Kc, though it might shift the position of equilibrium?",
+        options: [
+            "The overall temperature of the system.",
+            "The nature of the reacting substances.",
+            "The concentration of reactants or products.",
+            "The presence of a suitable catalyst."
+        ],
+        correctAnswer: 2,
+        reasoning: "Textbook theory specifies that Kc is constant for a given reaction at a specific temperature. While concentration changes affect the position of equilibrium, they do not alter the value of Kc. Temperature does change Kc."
+    },
+    {
+        question: "Le-Chatelier's Principle outlines how systems at equilibrium respond to stress. If the total volume of a gaseous equilibrium system is significantly increased, which general direction will the equilibrium shift to alleviate this change?",
+        options: [
+            "Towards the side with more moles of gas.",
+            "Towards the side with fewer moles of gas.",
+            "Towards the side with the higher molecular mass.",
+            "Towards the side with the lower enthalpy."
+        ],
+        correctAnswer: 0,
+        reasoning: "Textbook theory, in the context of pressure/volume changes, states that a decrease in pressure (or an increase in volume) shifts the equilibrium towards the side with more moles of gas."
+    },
+    {
+        question: "A reversible reaction is known to absorb heat from its surroundings as it proceeds in the forward direction. To maximize the yield of products for this particular reaction, how should the temperature be adjusted?",
+        options: [
+            "Decreased to very low levels.",
+            "Increased significantly.",
+            "Maintained at a constant intermediate value.",
+            "Continuously cycled between high and low."
+        ],
+        correctAnswer: 1,
+        reasoning: "Textbook theory for an endothermic reaction (absorbs heat, ΔH > 0), increasing temperature shifts the equilibrium to the right (forward, endothermic direction), favoring product formation."
+    },
+    {
+        question: "In the industrial production of sulfur trioxide (SO3), a critical intermediate for sulfuric acid, the reaction is exothermic. To achieve a balance between reaction rate and product yield, what temperature strategy is typically employed?",
+        options: [
+            "Extremely low temperatures to maximize yield at all costs.",
+            "Temperatures that exactly match the enthalpy of reaction.",
+            "Very high temperatures to ensure complete conversion.",
+            "Moderately high temperatures with a catalyst to ensure reasonable rates."
+        ],
+        correctAnswer: 3,
+        reasoning: "Textbook theory for SO3 formation mentions an exothermic reaction, so lower temperature favors SO3 formation. However, an 'optimum temperature' of 400-500°C is used with a catalyst to balance rate and yield, indicating moderately high temperatures are preferred for practical purposes."
+    },
+    {
+        question: "Ammonium hydroxide, a weak base, undergoes partial ionization in water. When ammonium chloride, a strong electrolyte, is dissolved in this solution, what is the precise impact on the degree of ammonium hydroxide's ionization?",
+        options: [
+            "It significantly increases due to enhanced solvent interaction.",
+            "It is only affected by changes in temperature, not added salts.",
+            "It is suppressed, leading to a lower concentration of hydroxide ions.",
+            "It remains unchanged due to the presence of a strong acid."
+        ],
+        correctAnswer: 2,
+        reasoning: "Textbook theory explains that adding ammonium chloride to ammonium hydroxide solution suppresses the ionization of NH4OH due to the common NH4⁺ ion, which is an example of the common ion effect, thus reducing hydroxide concentration."
+    },
+    {
+        question: "The solubility product constant (Ksp) for a sparingly soluble salt is a characteristic value. What specific condition must be met by the solution for Ksp to accurately represent the product of ion concentrations?",
+        options: [
+            "The solution must be dilute and unsaturated.",
+            "The solution must be at its maximum ion concentration (saturated).",
+            "The solution must be supersaturated and unstable.",
+            "The solution must contain a common ion."
+        ],
+        correctAnswer: 1,
+        reasoning: "Textbook theory defines Ksp as the product of molar concentrations of ions in a *saturated solution* for a sparingly soluble salt."
+    },
+    {
+        question: "A dynamic equilibrium is established when a reaction's forward and reverse rates become equivalent. What is the implication of this kinetic equality for the observable, macroscopic properties of the system?",
+        options: [
+            "Reactant and product concentrations start to oscillate wildly.",
+            "The system undergoes a complete physical transformation.",
+            "All measurable properties, such as concentration and temperature, stabilize.",
+            "The reaction ceases entirely, becoming static."
+        ],
+        correctAnswer: 2,
+        reasoning: "Textbook theory states that at equilibrium, the rates of the forward and reverse reactions become equal, and the concentrations of reactants and products remain constant over time, meaning all macroscopic properties stabilize."
+    },
+    {
+        question: "In a closed container, a solid reactant decomposes into a solid product and a gaseous product. This reaction reaches a state where the amount of gaseous product is constant. This scenario represents which specific type of equilibrium?",
+        options: [
+            "Homogeneous solid equilibrium",
+            "Gas-liquid equilibrium",
+            "Aqueous phase equilibrium",
+            "Heterogeneous equilibrium"
+        ],
+        correctAnswer: 3,
+        reasoning: "Textbook theory defines heterogeneous equilibrium as occurring when reactants and products exist in two or more different phases, such as solid and gas, as described in the example."
+    },
+    {
+        question: "The value of the equilibrium constant (Kc) for a particular reaction changes only under a specific condition. Which of the following experimental modifications is uniquely capable of altering the numerical magnitude of Kc?",
+        options: [
+            "Introducing an inert gas at constant volume.",
+            "Changing the concentrations of reactants.",
+            "Altering the reaction temperature.",
+            "Adding a specific enzyme catalyst."
+        ],
+        correctAnswer: 2,
+        reasoning: "Textbook theory explicitly states that temperature changes affect both the position of equilibrium and the value of the equilibrium constant (Kc)."
+    },
+    {
+        question: "Le-Chatelier's Principle functions by driving a system towards a new equilibrium to counteract a disturbance. If the concentration of a reactant is decreased, in what direction will the equilibrium primarily shift?",
+        options: [
+            "Towards the products.",
+            "In no particular direction.",
+            "Towards the reactants.",
+            "It will oscillate rapidly."
+        ],
+        correctAnswer: 2,
+        reasoning: "Textbook theory, based on Le-Chatelier's Principle, states that removing a reactant shifts the equilibrium to the left (reverse direction), favoring reactant formation."
+    },
+    {
+        question: "For a reversible reaction, if the number of moles of gaseous reactants is identical to the number of moles of gaseous products, how would an external decrease in pressure affect the system's equilibrium?",
+        options: [
+            "It would significantly shift towards the product side.",
+            "It would lead to an increase in the equilibrium constant.",
+            "It would have no impact on the equilibrium position.",
+            "It would cause a shift towards the reactant side."
+        ],
+        correctAnswer: 2,
+        reasoning: "Textbook theory clarifies that if there is no change in the number of moles of gas (Δn = 0), pressure changes have no effect on the equilibrium position."
+    },
+    {
+        question: "An endothermic reaction at equilibrium is subjected to a reduction in temperature. How will this manipulation influence the spontaneity of the forward process and the final product yield?",
+        options: [
+            "It will cause the equilibrium constant to increase.",
+            "It will inhibit the forward reaction, decreasing yield.",
+            "It will favor the forward reaction, increasing yield.",
+            "It will have no impact on the yield."
+        ],
+        correctAnswer: 1,
+        reasoning: "Textbook theory states that for an endothermic reaction (absorbs heat), decreasing temperature shifts the equilibrium to the left (reverse, exothermic direction), disfavoring the forward reaction and decreasing product yield."
+    },
+    {
+        question: "The addition of a catalyst to a reversible reaction system has a profound effect on its kinetics. What is the precise consequence of a catalyst's action on the activation energy for both the forward and reverse pathways?",
+        options: [
+            "It selectively lowers the forward activation energy only.",
+            "It increases both forward and reverse activation energies.",
+            "It has no effect on activation energy but enhances collision frequency.",
+            "It lowers both forward and reverse activation energies equally."
+        ],
+        correctAnswer: 3,
+        reasoning: "Textbook theory explains that a catalyst increases the rate of both forward and reverse reactions equally by lowering the activation energy for both pathways."
+    },
+    {
+        question: "In the industrial synthesis of sulfuric acid, the formation of SO3 from SO2 and O2 is highly exothermic. To maintain an economically viable process, what pressure conditions are typically applied?",
+        options: [
+            "Extremely high pressures to compress reactants.",
+            "Slightly elevated pressures to favor product formation.",
+            "Atmospheric pressure, as it has no effect.",
+            "Vacuum conditions to remove products rapidly."
+        ],
+        correctAnswer: 1,
+        reasoning: "Textbook theory states that for SO3 formation, 3 moles of gas form 2 moles (2SO2(g) + O2(g) ⇌ 2SO3(g)). A slightly higher pressure (1.5-1.7 atm) favors SO3 formation by shifting equilibrium to the side with fewer moles of gas."
+    },
+    {
+        question: "When hydrochloric acid gas is passed through a saturated solution of sodium chloride, precipitation of sodium chloride is observed. This phenomenon is a direct manifestation of which principle?",
+        options: [
+            "Le-Chatelier's principle related to pressure changes.",
+            "The effect of temperature on solubility.",
+            "Osmotic pressure differentials.",
+            "The common ion effect."
+        ],
+        correctAnswer: 3,
+        reasoning: "Textbook theory uses this exact example to illustrate the common ion effect: the common Cl⁻ ion from HCl shifts the dissolution equilibrium of NaCl backward, causing precipitation."
+    },
+    {
+        question: "A solution is prepared such that its Ionic Product (IP) for a sparingly soluble salt is precisely equal to its Solubility Product (Ksp). What can be definitively concluded about the saturation state of this solution?",
+        options: [
+            "It is an unsaturated solution, capable of dissolving more salt.",
+            "It is a saturated solution, holding the maximum dissolved ions without precipitation.",
+            "It is a supersaturated solution, prone to spontaneous precipitation.",
+            "The salt is completely insoluble in the given solvent."
+        ],
+        correctAnswer: 1,
+        reasoning: "Textbook theory states that if IP = Ksp, the solution is saturated, meaning no precipitation occurs, but it holds the maximum amount of dissolved ions."
+    },
+    {
+        question: "The concept of 'dynamic equilibrium' implies that while macroscopic properties of a system remain constant, microscopic events persist. What specific characteristic of these microscopic events is crucial for maintaining equilibrium?",
+        options: [
+            "Reactant molecules are actively converted into products only.",
+            "All molecules cease to move or react once equilibrium is reached.",
+            "Only the reverse reaction continues, consuming products.",
+            "The rates of transformation in both directions are balanced."
+        ],
+        correctAnswer: 3,
+        reasoning: "Textbook theory emphasizes that at dynamic equilibrium, the rates of the forward and reverse reactions become equal, and these reactions continue microscopically, maintaining constant concentrations."
+    },
+    {
+        question: "A reversible reaction involves reactants and products in varying phases, for instance, a solid reacting to form a gas and another solid. What is the appropriate classification for the equilibrium established in this system?",
+        options: [
+            "Monophasic equilibrium",
+            "Heterogeneous equilibrium",
+            "Homogeneous equilibrium",
+            "Multiphase equilibrium"
+        ],
+        correctAnswer: 1,
+        reasoning: "Textbook theory defines heterogeneous equilibrium as existing when reactants and products are in two or more different phases, precisely matching the description."
+    },
+    {
+        question: "The equilibrium constant (Kc) for a given reaction is a fundamental property at a specific temperature. What is the underlying ratio of rate constants that defines this chemical constant?",
+        options: [
+            "The ratio of the product concentrations to the reactant concentrations.",
+            "The ratio of activation energies for forward and reverse reactions.",
+            "The ratio of the reverse reaction rate constant to the forward rate constant.",
+            "The ratio of the forward reaction rate constant to the reverse rate constant."
+        ],
+        correctAnswer: 3,
+        reasoning: "Textbook theory explicitly states that Kc is a ratio of the rate constants for the forward (kf) and reverse (kr) reactions (Kc = kf/kr)."
+    },
+    {
+        question: "According to Le-Chatelier's Principle, a system at equilibrium will attempt to mitigate any imposed stress. If an inert gas is added to a gaseous equilibrium system at constant volume, what will be the effect on the equilibrium position?",
+        options: [
+            "The equilibrium will shift towards the side with more moles of gas.",
+            "There will be no change in the equilibrium position.",
+            "The equilibrium will shift towards the side with fewer moles of gas.",
+            "The equilibrium will shift to favor the exothermic direction."
+        ],
+        correctAnswer: 1,
+        reasoning: "Textbook theory implies that pressure changes typically refer to partial pressures of reacting gases. Adding an inert gas at constant volume increases total pressure but does not change the partial pressures (and thus concentrations) of the reacting gases. Therefore, there is no effect on equilibrium position."
+    },
+    {
+        question: "Consider an exothermic reaction at equilibrium. If the system's temperature is intentionally reduced, what effect will this change have on the equilibrium constant's numerical value?",
+        options: [
+            "It will decrease the constant.",
+            "It will remain unchanged.",
+            "It will increase the constant.",
+            "It will fluctuate unpredictably."
+        ],
+        correctAnswer: 2,
+        reasoning: "Textbook theory states that for an exothermic reaction, decreasing temperature shifts the equilibrium to the right (forward, exothermic direction), and this also increases the value of the equilibrium constant (Kc)."
+    },
+    {
+        question: "A catalyst is introduced into a chemical system currently at equilibrium. What is the sole and direct impact of this catalyst on the equilibrium state?",
+        options: [
+            "It accelerates the attainment of equilibrium without changing its position.",
+            "It increases the final yield of products.",
+            "It alters the relative amounts of reactants and products at equilibrium.",
+            "It makes the overall reaction more exothermic."
+        ],
+        correctAnswer: 0,
+        reasoning: "Textbook theory states that a catalyst helps the system attain equilibrium faster but does not change the value of the equilibrium constant or the position of equilibrium."
+    },
+    {
+        question: "The industrial synthesis of ammonia (Haber's process) is an exothermic reaction. Despite this, a moderately high optimal temperature (400-450°C) is employed. What is the primary rationale for this temperature choice?",
+        options: [
+            "To shift the equilibrium significantly towards reactants.",
+            "To maintain the reaction in a homogeneous phase.",
+            "To prevent the catalyst from deactivating.",
+            "To achieve a satisfactory reaction rate alongside a reasonable yield."
+        ],
+        correctAnswer: 3,
+        reasoning: "Textbook theory mentions that for the exothermic Haber's process, a lower temperature favors ammonia formation, but too low a temperature makes the reaction too slow. An optimum temperature of 400-450°C is used with a catalyst to achieve a reasonable rate and yield."
+    },
+    {
+        question: "Acetic acid is a weak electrolyte. When sodium acetate, a strong electrolyte, is added to an acetic acid solution, the ionization of acetic acid is suppressed. This observation is a classic illustration of the principle that explains which phenomenon?",
+        options: [
+            "Electrolyte strength correlation.",
+            "Common ion effect.",
+            "Buffer capacity enhancement.",
+            "Solvent polarity influence."
+        ],
+        correctAnswer: 1,
+        reasoning: "Textbook theory uses this exact example (adding sodium acetate to acetic acid) to demonstrate the common ion effect, where the presence of a common ion (CH3COO⁻) suppresses the ionization of the weak electrolyte."
+    },
+    {
+        question: "A solution contains ions of a sparingly soluble salt, and its Ionic Product (IP) is determined to be less than its Solubility Product (Ksp). What is the expected behavior of this solution if more of the solid salt is introduced?",
+        options: [
+            "Additional solid salt will dissolve until saturation is reached.",
+            "Precipitation will immediately begin.",
+            "No more solid salt will dissolve.",
+            "The Ksp value will spontaneously increase."
+        ],
+        correctAnswer: 0,
+        reasoning: "Textbook theory states that if IP < Ksp, the solution is unsaturated; therefore, no precipitation occurs, and more of the sparingly soluble salt can dissolve."
+    },
+    {
+        question: "What is an essential condition for a chemical reaction to achieve and maintain an equilibrium state?",
+        options: [
+            "The reaction conditions (temperature, pressure, concentration) must be constant.",
+            "The reaction must be irreversible.",
+            "The system must be open to the surroundings.",
+            "All reactants must be completely consumed."
+        ],
+        correctAnswer: 0,
+        reasoning: "Textbook theory specifies that equilibrium is attained in a closed vessel and maintained as long as reaction conditions (temperature, pressure, concentration) are constant."
+    },
+    {
+        question: "A liquid-phase reaction involves miscible liquids as both reactants and products. This type of equilibrium is fundamentally distinct from one involving different phases. What is its correct classification?",
+        options: [
+            "Interfacial equilibrium",
+            "Heterogeneous liquid equilibrium",
+            "Phase-transition equilibrium",
+            "Homogeneous equilibrium"
+        ],
+        correctAnswer: 3,
+        reasoning: "Textbook theory states that homogeneous equilibrium occurs when all reactants and products are in the same phase, such as all miscible liquids."
+    },
+    {
+        question: "The equilibrium constant (Kc) for a reaction is a numerical value that provides insight into the relative amounts of products and reactants at equilibrium. What key characteristic makes Kc specific to a given reaction?",
+        options: [
+            "It depends on the nature of reactants and the specific temperature.",
+            "It varies significantly with the initial concentration of reactants.",
+            "It is solely determined by the volume of the reaction vessel.",
+            "It is directly proportional to the total pressure of the system."
+        ],
+        correctAnswer: 0,
+        reasoning: "Textbook theory explicitly states that Kc is constant for a given reaction at a specific temperature and depends on the nature of reactants."
+    },
+    {
+        question: "According to Le-Chatelier's Principle, if a product is continuously removed from a reversible reaction system at equilibrium, how will the system respond to compensate for this alteration?",
+        options: [
+            "The equilibrium will shift to the left, favoring reactant formation.",
+            "The equilibrium will shift to the right, favoring product formation.",
+            "The equilibrium constant will increase to adjust for the change.",
+            "The reaction will cease to proceed in either direction."
+        ],
+        correctAnswer: 1,
+        reasoning: "Textbook theory from Le-Chatelier's Principle indicates that removing a product shifts the equilibrium to the right (forward direction), favoring product formation, to minimize the effect of the removal."
+    },
+    {
+        question: "For a gaseous system at equilibrium, an external reduction in the volume of the reaction vessel is imposed. How will this change specifically impact the equilibrium position, considering the stoichiometry of the reaction?",
+        options: [
+            "It will shift towards the side with more moles of gas.",
+            "It will always favor the endothermic direction.",
+            "It will cause an increase in the equilibrium constant.",
+            "It will shift towards the side with fewer moles of gas."
+        ],
+        correctAnswer: 3,
+        reasoning: "Textbook theory explains that an increase in pressure (or decrease in volume) shifts the equilibrium towards the side with fewer moles of gas."
+    },
+    {
+        question: "An endothermic reaction at equilibrium experiences a substantial increase in temperature. What is the combined effect on the forward reaction's favorability and the numerical value of the equilibrium constant?",
+        options: [
+            "The forward reaction is disfavored, and Kc decreases.",
+            "The forward reaction is favored, and Kc decreases.",
+            "The forward reaction is favored, and Kc increases.",
+            "The forward reaction is disfavored, and Kc increases."
+        ],
+        correctAnswer: 2,
+        reasoning: "Textbook theory for an endothermic reaction states that increasing temperature shifts the equilibrium to the right (forward, endothermic direction) and increases the value of the equilibrium constant (Kc)."
+    },
+    {
+        question: "What is a unique characteristic of a catalyst's influence on a reversible chemical reaction that sets it apart from other factors affecting equilibrium?",
+        options: [
+            "It impacts the rate of equilibrium attainment without altering its ultimate position.",
+            "It initiates reactions that would otherwise not occur.",
+            "It changes the relative stability of reactants and products.",
+            "It functions by completely consuming one of the reactants."
+        ],
+        correctAnswer: 0,
+        reasoning: "Textbook theory explicitly states that a catalyst helps the system attain equilibrium faster but does not change the value of the equilibrium constant or the position of equilibrium."
+    },
+    {
+        question: "In the industrial synthesis of SO3, a slightly higher pressure (1.5-1.7 atm) is used. What is the fundamental reason this pressure range is chosen, considering the reaction's gaseous stoichiometry?",
+        options: [
+            "To prevent product decomposition at higher temperatures.",
+            "To favor the side of the reaction with fewer gaseous moles.",
+            "To maximize the rate of the reverse reaction.",
+            "To enhance the solubility of the catalyst."
+        ],
+        correctAnswer: 1,
+        reasoning: "Textbook theory for SO3 formation (2SO2(g) + O2(g) ⇌ 2SO3(g)) involves 3 moles of gas reacting to form 2 moles. Higher pressure shifts equilibrium towards the side with fewer moles of gas, favoring product formation."
+    },
+    {
+        question: "Consider a saturated solution of a sparingly soluble salt. If a common ion is introduced into this solution, what immediate and direct consequence will be observed?",
+        options: [
+            "The Ksp value of the salt will decrease.",
+            "The solubility of the sparingly soluble salt will increase.",
+            "The solution will become unsaturated.",
+            "Some of the sparingly soluble salt will precipitate out."
+        ],
+        correctAnswer: 3,
+        reasoning: "Textbook theory on the common ion effect states that it suppresses the solubility of a weak electrolyte by shifting the equilibrium towards the left (precipitation side) due to the added common ion."
+    },
+    {
+        question: "When assessing the likelihood of precipitation for a sparingly soluble salt, if the calculated Ionic Product (IP) is found to be greater than the Solubility Product (Ksp), what is the definitive implication for the solution?",
+        options: [
+            "The solution is supersaturated; precipitation will occur.",
+            "The solution is unsaturated; no precipitation will occur.",
+            "The solution is saturated; no further change will occur.",
+            "The salt is highly soluble, not sparingly soluble."
+        ],
+        correctAnswer: 0,
+        reasoning: "Textbook theory states that if IP > Ksp, the solution is supersaturated and unstable, and precipitation will occur until IP = Ksp."
+    },
+    {
+        question: "For a system to achieve and maintain a state of chemical equilibrium, a specific type of reaction is essential. What fundamental characteristic must such a reaction possess?",
+        options: [
+            "It must be spontaneous in only one direction.",
+            "It must be reversible, allowing products to reform reactants.",
+            "It must involve only gaseous reactants.",
+            "It must go to completion, exhausting all reactants."
+        ],
+        correctAnswer: 1,
+        reasoning: "Textbook theory states that many chemical reactions are reversible, meaning products can react to reform reactants, and they often do not go to completion but proceed until an equilibrium state is reached."
+    },
+    {
+        question: "In a closed container, a solid reactant reacts to form a liquid product and a gaseous product, reaching equilibrium. This scenario is a clear instance of which classification of chemical equilibrium?",
+        options: [
+            "Uniform phase equilibrium",
+            "Homogeneous equilibrium",
+            "Solution-phase equilibrium",
+            "Heterogeneous equilibrium"
+        ],
+        correctAnswer: 3,
+        reasoning: "Textbook theory defines heterogeneous equilibrium as existing when reactants and products are in two or more different phases, exemplified by solid, liquid, and gas phases involved."
+    },
+    {
+        question: "The Law of Mass Action describes reaction rates. At equilibrium, the ratio of product active masses (molar concentrations) to reactant active masses, each raised to their stoichiometric coefficients, is constant. This constant is specifically known as what?",
+        options: [
+            "The reaction quotient (Qc)",
+            "The rate constant (k)",
+            "The dissociation constant (Ka)",
+            "The equilibrium constant (Kc)"
+        ],
+        correctAnswer: 3,
+        reasoning: "Textbook theory explicitly defines the equilibrium constant (Kc) as this ratio at equilibrium, derived from the Law of Mass Action."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Chemistry ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-CHE-0010';
+let quizData = quizData_WCW_CHE_0010;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-CHE-0010', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-CHE-0010', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-CHE-0010', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_CHE_0010;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_CHE_0010;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_CHE_0010[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_CHE_0010.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
